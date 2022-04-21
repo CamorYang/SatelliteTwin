@@ -1,4 +1,3 @@
-import * as THREE from "node_modules/three/build/three.js"
 const gui = new dat.GUI({closed:true})
 gui.hide()
 
