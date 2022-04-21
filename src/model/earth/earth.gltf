@@ -1,0 +1,531 @@
+{
+    "asset" : {
+        "copyright" : "camor",
+        "generator" : "Khronos glTF Blender I/O v1.3.48",
+        "version" : "2.0"
+    },
+    "extensionsUsed" : [
+        "KHR_lights_punctual"
+    ],
+    "extensionsRequired" : [
+        "KHR_lights_punctual"
+    ],
+    "extensions" : {
+        "KHR_lights_punctual" : {
+            "lights" : [
+                {
+                    "color" : [
+                        1,
+                        0.9741506576538086,
+                        0.7874122262001038
+                    ],
+                    "intensity" : 800,
+                    "type" : "point",
+                    "name" : "\u70b9\u5149"
+                }
+            ]
+        }
+    },
+    "scene" : 0,
+    "scenes" : [
+        {
+            "name" : "Scene",
+            "nodes" : [
+                0,
+                2,
+                4,
+                5,
+                6,
+                7
+            ]
+        }
+    ],
+    "nodes" : [
+        {
+            "mesh" : 0,
+            "name" : "stars",
+            "rotation" : [
+                0.7071068286895752,
+                0,
+                0,
+                0.7071068286895752
+            ],
+            "scale" : [
+                3.0914664268493652,
+                1.5457332134246826,
+                1.5457332134246826
+            ],
+            "translation" : [
+                0.3258049488067627,
+                -0.569404125213623,
+                -21.072267532348633
+            ]
+        },
+        {
+            "extensions" : {
+                "KHR_lights_punctual" : {
+                    "light" : 0
+                }
+            },
+            "name" : "\u70b9\u5149_Orientation",
+            "rotation" : [
+                -0.7071067690849304,
+                0,
+                0,
+                0.7071067690849304
+            ]
+        },
+        {
+            "children" : [
+                1
+            ],
+            "name" : "\u70b9\u5149",
+            "scale" : [
+                1.5457332134246826,
+                1.5457332134246826,
+                1.5457332134246826
+            ],
+            "translation" : [
+                -2.5446677207946777,
+                1.6066176891326904,
+                0.8210411071777344
+            ]
+        },
+        {
+            "camera" : 0,
+            "name" : "Camera_Orientation",
+            "rotation" : [
+                -0.7071067690849304,
+                0,
+                0,
+                0.7071067690849304
+            ]
+        },
+        {
+            "children" : [
+                3
+            ],
+            "name" : "Camera",
+            "rotation" : [
+                0.4095933735370636,
+                -0.1423521339893341,
+                0.06487374007701874,
+                0.8987550139427185
+            ],
+            "scale" : [
+                1.5457332134246826,
+                1.5457332134246826,
+                1.5457332134246826
+            ],
+            "translation" : [
+                -2.340575695037842,
+                6.931244850158691,
+                8.79159927368164
+            ]
+        },
+        {
+            "mesh" : 1,
+            "name" : "atmosphere",
+            "scale" : [
+                1.5611904859542847,
+                1.5611904859542847,
+                1.5611904859542847
+            ],
+            "translation" : [
+                0.3258049488067627,
+                -0.569404125213623,
+                0.818873405456543
+            ]
+        },
+        {
+            "mesh" : 2,
+            "name" : "cloud",
+            "scale" : [
+                1.5472790002822876,
+                1.5472790002822876,
+                1.5472790002822876
+            ],
+            "translation" : [
+                0.3258049488067627,
+                -0.569404125213623,
+                0.818873405456543
+            ]
+        },
+        {
+            "mesh" : 3,
+            "name" : "surface",
+            "scale" : [
+                1.5457332134246826,
+                1.5457332134246826,
+                1.5457332134246826
+            ],
+            "translation" : [
+                0.3258049488067627,
+                -0.569404125213623,
+                0.818873405456543
+            ]
+        }
+    ],
+    "cameras" : [
+        {
+            "name" : "Camera",
+            "perspective" : {
+                "aspectRatio" : 1.7777777777777777,
+                "yfov" : 0.39959648408210363,
+                "zfar" : 100,
+                "znear" : 0.10000000149011612
+            },
+            "type" : "perspective"
+        }
+    ],
+    "materials" : [
+        {
+            "doubleSided" : true,
+            "emissiveFactor" : [
+                1,
+                1,
+                1
+            ],
+            "name" : "Material.001",
+            "pbrMetallicRoughness" : {}
+        },
+        {
+            "doubleSided" : true,
+            "name" : "atmosphere",
+            "pbrMetallicRoughness" : {}
+        },
+        {
+            "doubleSided" : true,
+            "emissiveFactor" : [
+                0,
+                0,
+                0
+            ],
+            "name" : "cloud",
+            "pbrMetallicRoughness" : {
+                "baseColorFactor" : [
+                    0.800000011920929,
+                    0.800000011920929,
+                    0.800000011920929,
+                    1
+                ],
+                "metallicFactor" : 0,
+                "roughnessFactor" : 0.5
+            }
+        },
+        {
+            "doubleSided" : true,
+            "emissiveFactor" : [
+                0,
+                0,
+                0
+            ],
+            "name" : "surface",
+            "normalTexture" : {
+                "index" : 0,
+                "texCoord" : 0
+            },
+            "pbrMetallicRoughness" : {
+                "baseColorTexture" : {
+                    "index" : 1,
+                    "texCoord" : 0
+                },
+                "metallicFactor" : 0,
+                "metallicRoughnessTexture" : {
+                    "index" : 2,
+                    "texCoord" : 0
+                }
+            }
+        }
+    ],
+    "meshes" : [
+        {
+            "name" : "Plane",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "POSITION" : 0,
+                        "NORMAL" : 1,
+                        "TEXCOORD_0" : 2
+                    },
+                    "indices" : 3,
+                    "material" : 0
+                }
+            ]
+        },
+        {
+            "name" : "\u7403\u4f53",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "POSITION" : 4,
+                        "NORMAL" : 5,
+                        "TEXCOORD_0" : 6
+                    },
+                    "indices" : 7,
+                    "material" : 1
+                }
+            ]
+        },
+        {
+            "name" : "\u7403\u4f53.001",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "POSITION" : 8,
+                        "NORMAL" : 9,
+                        "TEXCOORD_0" : 10
+                    },
+                    "indices" : 7,
+                    "material" : 2
+                }
+            ]
+        },
+        {
+            "name" : "\u7403\u4f53.002",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "POSITION" : 11,
+                        "NORMAL" : 12,
+                        "TEXCOORD_0" : 13
+                    },
+                    "indices" : 7,
+                    "material" : 3
+                }
+            ]
+        }
+    ],
+    "textures" : [
+        {
+            "source" : 0
+        },
+        {
+            "source" : 1
+        },
+        {
+            "source" : 2
+        }
+    ],
+    "images" : [
+        {
+            "mimeType" : "image/png",
+            "name" : "8k_earth_normal_map",
+            "uri" : "earth-texture/8k_earth_normal_map.png"
+        },
+        {
+            "mimeType" : "image/jpeg",
+            "name" : "8k_earth_daymap",
+            "uri" : "earth-texture/8k_earth_daymap.jpg"
+        },
+        {
+            "mimeType" : "image/png",
+            "name" : "8k_earth_specular_map",
+            "uri" : "earth-texture/8k_earth_specular_map.png"
+        }
+    ],
+    "accessors" : [
+        {
+            "bufferView" : 0,
+            "componentType" : 5126,
+            "count" : 4,
+            "max" : [
+                1,
+                0,
+                1
+            ],
+            "min" : [
+                -1,
+                0,
+                -1
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 1,
+            "componentType" : 5126,
+            "count" : 4,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 2,
+            "componentType" : 5126,
+            "count" : 4,
+            "type" : "VEC2"
+        },
+        {
+            "bufferView" : 3,
+            "componentType" : 5123,
+            "count" : 6,
+            "type" : "SCALAR"
+        },
+        {
+            "bufferView" : 4,
+            "componentType" : 5126,
+            "count" : 1957888,
+            "max" : [
+                0.9997878670692444,
+                0.999983549118042,
+                0.9997901320457458
+            ],
+            "min" : [
+                -0.9997876286506653,
+                -0.999983549118042,
+                -0.9997853636741638
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 5,
+            "componentType" : 5126,
+            "count" : 1957888,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 6,
+            "componentType" : 5126,
+            "count" : 1957888,
+            "type" : "VEC2"
+        },
+        {
+            "bufferView" : 7,
+            "componentType" : 5125,
+            "count" : 2936832,
+            "type" : "SCALAR"
+        },
+        {
+            "bufferView" : 8,
+            "componentType" : 5126,
+            "count" : 1957888,
+            "max" : [
+                0.9997878670692444,
+                0.999983549118042,
+                0.9997901320457458
+            ],
+            "min" : [
+                -0.9997876286506653,
+                -0.999983549118042,
+                -0.9997853636741638
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 9,
+            "componentType" : 5126,
+            "count" : 1957888,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 10,
+            "componentType" : 5126,
+            "count" : 1957888,
+            "type" : "VEC2"
+        },
+        {
+            "bufferView" : 11,
+            "componentType" : 5126,
+            "count" : 1957888,
+            "max" : [
+                0.9997878670692444,
+                0.999983549118042,
+                0.9997901320457458
+            ],
+            "min" : [
+                -0.9997876286506653,
+                -0.999983549118042,
+                -0.9997853636741638
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 12,
+            "componentType" : 5126,
+            "count" : 1957888,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 13,
+            "componentType" : 5126,
+            "count" : 1957888,
+            "type" : "VEC2"
+        }
+    ],
+    "bufferViews" : [
+        {
+            "buffer" : 0,
+            "byteLength" : 48,
+            "byteOffset" : 0
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 48,
+            "byteOffset" : 48
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 32,
+            "byteOffset" : 96
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 12,
+            "byteOffset" : 128
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 23494656,
+            "byteOffset" : 140
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 23494656,
+            "byteOffset" : 23494796
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 15663104,
+            "byteOffset" : 46989452
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 11747328,
+            "byteOffset" : 62652556
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 23494656,
+            "byteOffset" : 74399884
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 23494656,
+            "byteOffset" : 97894540
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 15663104,
+            "byteOffset" : 121389196
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 23494656,
+            "byteOffset" : 137052300
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 23494656,
+            "byteOffset" : 160546956
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 15663104,
+            "byteOffset" : 184041612
+        }
+    ],
+    "buffers" : [
+        {
+            "byteLength" : 199704716,
+            "uri" : "earth.bin"
+        }
+    ]
+}
