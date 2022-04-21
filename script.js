@@ -1,8 +1,8 @@
 const gui = new dat.GUI({closed:true})
 gui.hide()
 
-const gltfLoader = new THREE.GLTFLoader()
-console.log(gltfLoader)
+// const gltfLoader = new THREE.GLTFLoader()
+// console.log(gltfLoader)
 
 //Scene 
 const scene = new THREE.Scene()
