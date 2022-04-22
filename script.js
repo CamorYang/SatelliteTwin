@@ -1,11 +1,19 @@
+//@ts-ignore
+// import {GLTFLoader} from './blog/node_modules/three/examples/jsm/loaders/GLTFLoader.js'
 const gui = new dat.GUI({closed:true})
 gui.hide()
 
-// const gltfLoader = new THREE.GLTFLoader()
-// console.log(gltfLoader)
+
+
+
+const gltfLoader = new GLTFLoader()
+console.log(gltfLoader)
 
 //Scene 
 const scene = new THREE.Scene()
+
+// const gltfLoader = new THREE.GLTFLoader()
+// console.log(gltfLoader)
 
 const textureLoader =new THREE.TextureLoader()
 
