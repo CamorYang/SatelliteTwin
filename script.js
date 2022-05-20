@@ -1,19 +1,35 @@
-//@ts-ignore
-// import {GLTFLoader} from './blog/node_modules/three/examples/jsm/loaders/GLTFLoader.js'
+import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.114/build/three.module.js';     
+import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.114/examples/jsm/controls/OrbitControls.js';
+import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three@0.114/examples/jsm/loaders/GLTFLoader.js';
+import * as dat from './node_modules/dat.gui/build/dat.gui.module.js'
+import {DRACOLoader} from 'https://cdn.jsdelivr.net/npm/three@0.114/examples/jsm/loaders/DRACOLoader.js'
 const gui = new dat.GUI({closed:true})
 gui.hide()
 
-
-
-
-const gltfLoader = new GLTFLoader()
-console.log(gltfLoader)
-
 //Scene 
 const scene = new THREE.Scene()
+// scene.background = new 
+//background of a scene could be set to a Color, Texture, CubeTexture
 
-// const gltfLoader = new THREE.GLTFLoader()
-// console.log(gltfLoader)
+// Models
+// const dracoLoader = new DRACOLoader()
+// dracoLoader.setDecoderPath('./src/draco/')
+
+const gltfLoader = new GLTFLoader()
+// gltfLoader.setDRACOLoader(dracoLoader) 
+
+let mixer = null
+
+gltfLoader.load(
+    './src/model/Fox/glTF/Fox.gltf',
+    (gltf) => 
+    {
+        console.log(gltf.scene.children[0])
+        
+        gltf.scene.scale.set(0.01,0.01,0.01)
+        scene.add(gltf.scene.children[0])
+    }
+)
 
 const textureLoader =new THREE.TextureLoader()
 
@@ -21,13 +37,14 @@ const texture = textureLoader.load('https://camoyang.com/assets/img/1.png')
 
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.5) 
 
-gui.add(ambientLight, 'intensity').min(0).max(1).step(0.01)
 
-// const directionalLight = new THREE.DirectionalLight(0xffffff,1)
-// directionalLight.position.set(0.5,1,2)
-// scene.add(directionalLight)
+// gui.add(ambientLight, 'intensity').min(0).max(1).step(0.01)
 
-const hemisphereLight = new THREE.HemisphereLight(0xff0000,0x0000ff,1)
+const directionalLight = new THREE.DirectionalLight(0xffffff,3)
+directionalLight.position.set(0.5,4,2)
+scene.add(directionalLight)
+
+const hemisphereLight = new THREE.HemisphereLight(0xff0000,0x0000ff,3)
 scene.add(hemisphereLight)
 
 //Debug UI
@@ -184,8 +201,8 @@ material.roughness = 0.65
 // material.matcap = texture
 // material.wireframe = true
 // material.flatShading = true
-gui.add(material,'metalness').min(0).max(1).step(0.0001)
-gui.add(material,'roughness').min(0).max(1).step(0.0001)
+// gui.add(material,'metalness').min(0).max(1).step(0.0001)
+// gui.add(material,'roughness').min(0).max(1).step(0.0001)
 // gui.add(material,'aoMapIntensity').min(0).max(10).step(0.001)
 // gui.add(material,'displacementScale').min(0).max(1).step(0.0001)
 
@@ -204,26 +221,28 @@ sphere.position.x = 1
 sphere.geometry.setAttribute('uv2', new THREE.BufferAttribute(sphere.geometry.attributes.uv.array,2))
 
 
-const plane = new THREE.Mesh(new THREE.PlaneBufferGeometry(1,1), material)
+const plane = new THREE.Mesh(new THREE.PlaneBufferGeometry(1,1), new THREE.MeshNormalMaterial())
 plane.position.x = 0
 plane.geometry.setAttribute('uv2', new THREE.BufferAttribute(plane.geometry.attributes.uv.array,2))
+// plane.setSizes(new THREE.Vector3(3,3,3))
+scene.add(plane)
 
 const plane2 = new THREE.Mesh(new THREE.PlaneBufferGeometry(5,5),material)
 plane2.rotation.x = Math.PI *0.5
 plane2.position.set(0,-0.5,0)
-scene.add(plane2)
+// scene.add(plane2)
 
 const torus = new THREE.Mesh(new THREE.TorusBufferGeometry(0.3,0.2,16,32), material)
 torus.position.x = -1
 torus.geometry.setAttribute('uv2', new THREE.BufferAttribute(torus.geometry.attributes.uv.array,2))
 
-scene.add(sphere, plane, torus)
+// scene.add(sphere, plane, torus)
 
-scene.add(ambientLight)
+// scene.add(ambientLight)
 
 const pointLight = new THREE.PointLight(0xfffff, 0.5)
 pointLight.position.set(2,3,4)
-scene.add(pointLight)
+// scene.add(pointLight)
 // const mesh = new THREE.Mesh(geometryB, material)
 //Scale
 // mesh.scale.x = 2
@@ -259,22 +278,23 @@ const cube1 = new THREE.Mesh(new THREE.BoxGeometry(1,1,1),new THREE.MeshBasicMat
 cube1.position.set(-1,1,1)
 const cube2 = new THREE.Mesh(new THREE.BoxGeometry(1,1,1),new THREE.MeshBasicMaterial({color:0x0000ff}))
 cube2.position.set(3,3,3)
-group.add(cube1) 
-group.add(cube2)
-scene.add(group)
+// group.add(cube1) 
+// group.add(cube2)
+// scene.add(group)
 
 // Axes helper
 const axesHelper = new THREE.AxesHelper(2)
-scene.add(axesHelper)
+// scene.add(axesHelper)
 
 //Camera
-const camera = new THREE.PerspectiveCamera(fov = 75, aspect=1, near=0.001, far=10000)
+// const camera = new THREE.PerspectiveCamera(fov = 75, aspect = 1, near = 0.001, far = 10000)
+const camera = new THREE.PerspectiveCamera(75, 1, 0.001, 10000)
 camera.position.z = 3
 // camera.lookAt(mesh)
 scene.add(camera)   
 
 //Controls
-const controls = new THREE.OrbitControls(camera, canvas)
+const controls = new OrbitControls(camera, canvas)
 // controls.enabled = false
 controls.enableDamping = true
 
@@ -305,17 +325,20 @@ console.log("render complete")
 
 //Clock
 let clock = new THREE.Clock()
-
+let previousTime = 0
 //Animations
 
 //Time 
-let time = Date.now()
+// let time = Date.now()
+
 
 
 const tick = () => 
 {
     // //Clock
     const elapsedTime = clock.getElapsedTime()
+    const deltaTime = elapsedTime - previousTime
+    previousTime = elapsedTime
     // console.log(elapsedTime)
     // // mesh.position.x -=0.01 * elapsedTime
     // mesh.rotation.x =Math.PI * 2 * elapsedTime
@@ -324,6 +347,11 @@ const tick = () =>
     // // mesh.position.y +=0.01 * elapsedTime
     // mesh.rotation.y =Math.PI * 1 * elapsedTime 
 
+    //Update mixer
+    if (mixer !== null)
+    {
+        mixer.update(deltaTime)
+    }
     // Update Camera
     // camera.position.x = Math.sin(cursor.x * Math.PI * 2) * 3
     // camera.position.z = Math.cos(cursor.y * Math.PI * 2) * 3
@@ -332,9 +360,9 @@ const tick = () =>
     // camera.lookAt(new THREE.Vector3())
 
     //Update Object
-    sphere.rotation.y = elapsedTime * Math.PI * 0.25
-    plane.rotation.y = elapsedTime * Math.PI * 0.25
-    torus.rotation.y = elapsedTime * Math.PI * 0.25
+    // sphere.rotation.y = elapsedTime * Math.PI * 0.25
+    // plane.rotation.y = elapsedTime * Math.PI * 0.25
+    // torus.rotation.y = elapsedTime * Math.PI * 0.25
 
     //Update controls
     controls.update()

@@ -1,0 +1,304 @@
+{
+    "asset" : {
+        "copyright" : "camor",
+        "generator" : "Khronos glTF Blender I/O v1.3.48",
+        "version" : "2.0"
+    },
+    "scene" : 0,
+    "scenes" : [
+        {
+            "name" : "Scene",
+            "nodes" : [
+                0,
+                1,
+                2
+            ]
+        }
+    ],
+    "nodes" : [
+        {
+            "mesh" : 0,
+            "name" : "surface"
+        },
+        {
+            "mesh" : 1,
+            "name" : "clouds",
+            "scale" : [
+                1.0099999904632568,
+                1.0099999904632568,
+                1.0099999904632568
+            ]
+        },
+        {
+            "mesh" : 2,
+            "name" : "atmosphere",
+            "scale" : [
+                1.0049999952316284,
+                1.0049999952316284,
+                1.0049999952316284
+            ]
+        }
+    ],
+    "materials" : [
+        {
+            "doubleSided" : true,
+            "emissiveFactor" : [
+                0,
+                0,
+                0
+            ],
+            "name" : "surface",
+            "normalTexture" : {
+                "index" : 0,
+                "scale" : 5.999999523162842,
+                "texCoord" : 0
+            },
+            "pbrMetallicRoughness" : {
+                "baseColorTexture" : {
+                    "index" : 1,
+                    "texCoord" : 0
+                },
+                "metallicFactor" : 0,
+                "roughnessFactor" : 0.5
+            }
+        },
+        {
+            "doubleSided" : true,
+            "emissiveFactor" : [
+                0,
+                0,
+                0
+            ],
+            "name" : "clouds",
+            "pbrMetallicRoughness" : {
+                "baseColorFactor" : [
+                    0.800000011920929,
+                    0.800000011920929,
+                    0.800000011920929,
+                    1
+                ],
+                "metallicFactor" : 0,
+                "roughnessFactor" : 0.5
+            }
+        },
+        {
+            "doubleSided" : true,
+            "name" : "volume",
+            "pbrMetallicRoughness" : {}
+        }
+    ],
+    "meshes" : [
+        {
+            "name" : "Sphere",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "POSITION" : 0,
+                        "NORMAL" : 1,
+                        "TEXCOORD_0" : 2
+                    },
+                    "indices" : 3,
+                    "material" : 0
+                }
+            ]
+        },
+        {
+            "name" : "Sphere.001",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "POSITION" : 4,
+                        "NORMAL" : 5,
+                        "TEXCOORD_0" : 6
+                    },
+                    "indices" : 3,
+                    "material" : 1
+                }
+            ]
+        },
+        {
+            "name" : "Sphere.002",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "POSITION" : 7,
+                        "NORMAL" : 8,
+                        "TEXCOORD_0" : 9
+                    },
+                    "indices" : 3,
+                    "material" : 2
+                }
+            ]
+        }
+    ],
+    "textures" : [
+        {
+            "source" : 0
+        },
+        {
+            "source" : 1
+        }
+    ],
+    "images" : [
+        {
+            "mimeType" : "image/png",
+            "name" : "8k_earth_normal_map",
+            "uri" : "earthTexture/8k_earth_normal_map.png"
+        },
+        {
+            "mimeType" : "image/png",
+            "name" : "8k_earth_whitemap-2",
+            "uri" : "earthTexture/8k_earth_whitemap-2.png"
+        }
+    ],
+    "accessors" : [
+        {
+            "bufferView" : 0,
+            "componentType" : 5126,
+            "count" : 2088960,
+            "max" : [
+                0.999801516532898,
+                0.999983549118042,
+                0.9998036623001099
+            ],
+            "min" : [
+                -0.9998014569282532,
+                -0.999983549118042,
+                -0.9997993111610413
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 1,
+            "componentType" : 5126,
+            "count" : 2088960,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 2,
+            "componentType" : 5126,
+            "count" : 2088960,
+            "type" : "VEC2"
+        },
+        {
+            "bufferView" : 3,
+            "componentType" : 5125,
+            "count" : 3133440,
+            "type" : "SCALAR"
+        },
+        {
+            "bufferView" : 4,
+            "componentType" : 5126,
+            "count" : 2088960,
+            "max" : [
+                0.999801516532898,
+                0.999983549118042,
+                0.9998036623001099
+            ],
+            "min" : [
+                -0.9998014569282532,
+                -0.999983549118042,
+                -0.9997993111610413
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 5,
+            "componentType" : 5126,
+            "count" : 2088960,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 6,
+            "componentType" : 5126,
+            "count" : 2088960,
+            "type" : "VEC2"
+        },
+        {
+            "bufferView" : 7,
+            "componentType" : 5126,
+            "count" : 2088960,
+            "max" : [
+                0.999801516532898,
+                0.999983549118042,
+                0.9998036623001099
+            ],
+            "min" : [
+                -0.9998014569282532,
+                -0.999983549118042,
+                -0.9997993111610413
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 8,
+            "componentType" : 5126,
+            "count" : 2088960,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 9,
+            "componentType" : 5126,
+            "count" : 2088960,
+            "type" : "VEC2"
+        }
+    ],
+    "bufferViews" : [
+        {
+            "buffer" : 0,
+            "byteLength" : 25067520,
+            "byteOffset" : 0
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 25067520,
+            "byteOffset" : 25067520
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 16711680,
+            "byteOffset" : 50135040
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 12533760,
+            "byteOffset" : 66846720
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 25067520,
+            "byteOffset" : 79380480
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 25067520,
+            "byteOffset" : 104448000
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 16711680,
+            "byteOffset" : 129515520
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 25067520,
+            "byteOffset" : 146227200
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 25067520,
+            "byteOffset" : 171294720
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 16711680,
+            "byteOffset" : 196362240
+        }
+    ],
+    "buffers" : [
+        {
+            "byteLength" : 213073920,
+            "uri" : "pureEarth.bin"
+        }
+    ]
+}
