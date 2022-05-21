@@ -9,6 +9,7 @@ import {CSS2DObject, CSS2DRenderer} from 'https://cdn.jsdelivr.net/npm/three@0.1
 import {EffectComposer} from 'https://cdn.jsdelivr.net/npm/three@0.114/examples/jsm/postprocessing/EffectComposer.js'
 import {RenderPass} from 'https://cdn.jsdelivr.net/npm/three@0.114/examples/jsm/postprocessing/RenderPass.js'
 import {BokehPass} from 'https://cdn.jsdelivr.net/npm/three@0.114/examples/jsm/postprocessing/BokehPass.js'
+// import { Object3D } from 'three';
 const DayNames = {
     1: 'Mon',
     3: 'Wed',
@@ -18,7 +19,7 @@ const DayNames = {
 let rotWorldMatrix
 var xAxis = new THREE.Vector3(1,0,0)
 var yAxis = new THREE.Vector3(0,1,0)
-let camera, scene, renderer, UIRenderer, light
+let camera, scene, renderer, UIRenderer, light,light2
 let group = new THREE.Group()
 
 
@@ -50,6 +51,7 @@ let mouseup = true
 let deltaX, deltaY, previousX=mouse.x, previousY=mouse.y
 let interfaceSerial= { Serial:1}
 let obj
+
 
 //curve
 const points=[]
@@ -107,19 +109,22 @@ back.onclick = function(){
     // obj.position.set(-4.2,1.2,0)
 }
 
+console.log(enter)
 //点击enter
 enter.onclick = function(){
     // 去掉interface0中除logo外的所有element
-    removeEntryUI()
+    // removeEntryUI()
+    console.log("enter activate")
     // 移动camera和camera.lookAt
     gsap.to(camera.position,{x:0,y:0,z:10,duration:1})
     gsap.to([welcome,enter],{opacity:0,duration:0.4})
     gsap.to(bokehPass.uniforms.maxblur,{value:0.005})
     gsap.to(bokehPass.uniforms.aperture,{value:18})
+    // gsap.to([glitch,mainMenu,back],{opacity:1,delay:0.7})
     // smoothMove
     // 显示下一个页面的UI
     glitch.classList.toggle("hide")
-    mainMenu.classList.remove("hide")
+    mainMenu.classList.toggle("hide")
     back.classList.remove("hide")
     // bokehPass.uniforms.maxblur.value = 0.005
     // bokehPass.uniforms.aperture.value = 18
@@ -127,12 +132,23 @@ enter.onclick = function(){
 
 movingRegion.onclick = function(){
     //remove the surface
+    scene.remove(surface)
     // gsap.to(camera.position,{x:0,y:0,z:-10,duration:1})
+    
     //initial the network
     initNetwork()
-    // camera.lookAt(network)
-    scene.remove(surface)
+
+    //fov-change
+    gsap.to(bokehPass.uniforms.maxblur,{value:0})
+    gsap.to(bokehPass.uniforms.aperture,{value:0})
+    // gsap.to(camera.position,{x:0,y:0,z:-10,duration:1})
+    camera.position.set(0,0,-10)
+    camera.lookAt(network.position)
     // gsap.to(surface,{opacity:0, duration:1})
+
+    //UIChange
+    glitch.classList.toggle("hide")
+    mainMenu.classList.toggle("hide")
 
 }
 
@@ -176,13 +192,12 @@ function init() {
     scene = new THREE.Scene();
     scene.background = new THREE.Color(0xE1DFE4)
     //Light
-    light = new THREE.HemisphereLight({color:new THREE.Color(0xFFFBF0)});
+    light = new THREE.AmbientLight({color:new THREE.Color(0xFFFBF0), intensity: 100});
+    
 
     //initObjects
     generateParticle(number)//Particle
     initSurface()//earth
-    // initNetwork()//network
-    initSatellite()//satellite
 
     // scene.add(CurveMesh);
     scene.add( light );
@@ -410,25 +425,31 @@ function removeEntryUI()
 }
 
 function initNetwork(){
-    const bakedMaterial = new THREE.MeshBasicMaterial({map:bakedTexture})
-    bakedMaterial.depthWrite = true
+    const bakedMaterial = new THREE.MeshDepthMaterial()
     gltfLoader.load(
-        './src/model/satellite/satellite.glb',
+        'src/model/network/network.gltf',
         (gltf) =>
         {
             gltf.scene.traverse((child) =>
-            {
-                child.material = bakedMaterial
-                
-            })
-            network.add(gltf.scene) 
-            scene.add(network)
-            network.position.set(2.4,0,0)
-            network.scale.set(0.3,0.3,0.3)
-            network.rotation.set(Math.PI/4,0,Math.PI/4)
+            child.material = bakedMaterial
+                )
+            scene.add(gltf.scene)
+            // console.log(scene)
+            hyalinizeNetwork("right")
+            gltf.scene.scale.set(0.3,0.3,0.3)
+            gltf.scene.position.set(-3,0,0)
+            gltf.scene.rotation.set(Math.PI/4,Math.PI/4,Math.PI/4)
         }
     )
+}
 
+function hyalinizeNetwork(direction){
+    const part = ["-flank1","-flank2","-bottom","-middle","-up","top"]
+    for(const element of part){
+        const temp = scene.getObjectByName(direction+element)//temp就是那个文件
+        console.log(temp)
+        // temp.material.opacity = 0
+    }
 }
 
 function initSurface(){
@@ -444,18 +465,37 @@ function initSurface(){
 }
 
 function initSatellite(){
-    // const bakedMaterial = new THREE.MeshBasicMaterial({map:bakedTexture})
-    // gltfLoader.load(
-    //     './src/model/satellite/satellite.glb',
-    //     (gltf) =>
-    //     {
-    //         gltf.scene.traverse((child) =>
-    //         {
-    //             child.material = bakedMaterial
-    //         })
-    //         scene.add(gltf.scene)
-    //     }
-    // )
+    const bakedMaterial = new THREE.MeshBasicMaterial({map:bakedTexture})
+    // bakedMaterial.depthWrite = true
+    gltfLoader.load(
+        './src/model/satellite/satellite.glb',
+        (gltf) =>
+        {
+            gltf.scene.traverse((child) =>
+            {
+                child.material = bakedMaterial
+            })
+            network.add(gltf.scene) 
+            //network.children[0].children代表了每个部位的不同设备
+            // console.log(gltf.scene.children)
+            network.add(gltf.scene)
+            console.log(network)
+            // network = gltf.scene.children[0].children
+            //network.children[0]
+
+            //addMaterial
+            // for(let i = 0;i<network.length;i++)
+            // {
+            //     network[i].material = bakedMaterial
+            // }
+        }
+    )
+    // console.log(network)
+    // console.log(network.position)
+    scene.add(network)
+    network.position.set(2.4,0,0)
+    network.scale.set(0.3,0.3,0.3)
+    network.rotation.set(Math.PI/4,0,Math.PI/4)
 }
 
 function GUIInitialization(){
@@ -465,6 +505,7 @@ function GUIInitialization(){
     gui.add(bokehPass.uniforms.focus,"value",0,100,0.1).name("focus")
     gui.add(bokehPass.uniforms.aperture,"value",0,100,0.1).name("aperture")
     gui.add(bokehPass.uniforms.maxblur,"value",0,0.01,0.0001).name("maxblur")
+    gui.hide()
 }
 
 function postprocessing(){
@@ -487,5 +528,6 @@ function rendererInitialization(){
     renderer = new THREE.WebGLRenderer( { antialias: true, canvas:canvas } )
     renderer.setPixelRatio( window.devicePixelRatio )
     renderer.setSize( window.innerWidth, window.innerHeight )
+    // renderer.outputEncoding = THREE.sRGBEncoding
     document.body.appendChild( renderer.domElement )
 }

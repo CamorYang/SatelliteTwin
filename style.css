@@ -102,6 +102,7 @@ ul{
 .mainMenu.hide{
     pointer-events: none;
     opacity:0;
+    transition: all 0.4s ease;
 }
 .mainMenu.active{
     
@@ -198,6 +199,8 @@ ul{
 }
 .glitch.hide{
     opacity:0;
+    transition-delay:2s;
+    transition:all 0.4s ease;
 }
 .glitch .scrollReminder .line{
     border:0.3px solid #848484;
@@ -225,6 +228,8 @@ ul{
     top:25%;
     left:170px;
     height:auto;
+    transition-delay:2s;
+    transition:all 0.4s ease;
     /* border: 2px solid; */
 }
 .glitchList.hide{
@@ -235,6 +240,14 @@ ul{
 .glitchList .movingRegion{
     margin-bottom:80px;
     height:70px;
+    /* border: 2px solid; */
+}
+.glitchList .movingRegion.hide{
+    margin-bottom:80px;
+    height:70px;
+    opacity:0;
+    transition-delay:0.4s;
+    transition:all 0.4s ease;
     /* border: 2px solid; */
 }
 .glitchList .movingRegion.two{
