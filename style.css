@@ -18,8 +18,28 @@
     font-family:"Poppins", sans-serif; 
     z-index: auto;
     border-radius:5px;
+    letter-spacing:2px;
+    line-height:150%;
 }
 
+#mainBack{
+    position: relative;
+    float:left;
+    margin:40px 50px 0px 0px;
+    z-index:5;
+    width: 60px;
+    left:123px;
+    top:120px;
+    height: 30px;
+    border: 1px solid #C71515;
+    color:#C71515;
+    border-radius:15px;
+    text-align: center;
+    line-height:28px;
+    opacity:0;
+    font-family: Microsoft-Yahei-Light;
+    
+}
 ul{
     list-style :none;
 }
@@ -60,26 +80,33 @@ ul{
     opacity:0;
 }
 
+.enter{
+    position:absolute;
+    left:40%;
+    top:55%;
+    width:20%;
+    height:40%;
+    /* border:2px solid green; */
+}
 .enter.hide{
-    pointer-events:none;
+    /* pointer-events:none; */
     transition-delay: 0.4s;
     transition:all 0.4s ease;
     opacity:0;
 }
 .enter .line{
     border:1px solid #C71515;
-    height:30%;
+    height:100%;
     position:absolute;
     left:50%;
     margin-left:-3px;
-    top:60%;
     transition:all 0.5 ease;
 
 }
 .enter .chara{
     position:absolute;
-    top:73%;
-    left: 52%;
+    top:50%;
+    left: 60%;
     text-align:center;
     color:#C71515;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
@@ -96,6 +123,7 @@ ul{
     margin-left:10px;
     transition: all 0.4s ease;
     transition-delay:0.3s;
+    overflow:scroll;
     /* box-shadow:1px 1px 2px 1px #e9e9e9; */
     
 }
@@ -119,6 +147,8 @@ ul{
 }
 .mainMenu .return{
    padding:7px 7px;
+   transition: all 0.4s ease;
+   transition-delay:2s;
 }
 .mainMenu .return.hide{
    opacity:0;
@@ -189,6 +219,14 @@ ul{
     opacity:1;
 }
 
+.mainMenu .gesturePrecision{
+
+}
+
+.mainMenu .satelliteCount{
+
+}
+
 .glitch{
     position:fixed;
     top:30%;
@@ -223,14 +261,29 @@ ul{
     font-family:Microsoft-Yahei-Light;
     color:#848484;
 }
-.glitchList{
+.container{
     position:fixed;
     top:25%;
     left:170px;
-    height:auto;
-    transition-delay:2s;
+    height:600px;
+    width:200px;
+    overflow:hidden;
+    /* border:2px solid; */
+}
+.container .glitchList{
+    position:fixed;
+    top:25%;
+    left:170px;
+    width:550px;
+    height:600px;
+    overflow-y:auto;
+    overflow-x:hidden;
+    transition-delay:0.6s;
     transition:all 0.4s ease;
     /* border: 2px solid; */
+}
+::-webkit-scrollbar-thumb{
+    display:none;
 }
 .glitchList.hide{
     pointer-events: none;
@@ -240,27 +293,30 @@ ul{
 .glitchList .movingRegion{
     margin-bottom:80px;
     height:70px;
+    float:top;
+
     /* border: 2px solid; */
 }
+.glitchList .movingRegion:hover{
+    text-shadow: 2px black;
+    transform:translateX(-2px);
+    
+
+}
 .glitchList .movingRegion.hide{
-    margin-bottom:80px;
-    height:70px;
     opacity:0;
     transition-delay:0.4s;
     transition:all 0.4s ease;
     /* border: 2px solid; */
 }
-.glitchList .movingRegion.two{
+.glitchList .movingRegion.even{
     transform:translateX(100px);
 }
-.glitchList .movingRegion.three{
+.glitchList .movingRegion.odd{
     transform:translateX(30px);
     opacity:0.7;
 }   
-.glitchList .movingRegion.four{
-    transform:translateX(100px);
-    opacity:0.3;
-}
+
 .glitchList .movingRegion .circle{
     position:relative;
     float:left;
@@ -271,7 +327,7 @@ ul{
 }
 
 .glitchList .movingRegion .serial{
-    float:right;
+    float:left;
     font-size:40px;
     /* top:10%; */
     /* bottom:10%; */
@@ -279,4 +335,495 @@ ul{
     margin-left:30px;
     font-family:Microsoft-Yahei-Light;
     color:#848484;
+}
+
+
+.Network{
+    /* border: 2px solid green; */
+    position:absolute;
+    width:700px;
+    height:500px;
+    /* background:white; */
+    left:100px;
+    top:200px;
+    opacity:0;
+
+}
+
+.hide{
+    opacity:0;
+    transition:0.4s;
+    pointer-events: none;
+}
+
+.NetworkData{
+    float:top;
+    position:relative;
+    height:auto;
+    width:auto;
+    opacity:0.7;
+    color:#848484;
+    font-size:36px;
+    padding:20px 0px 10px 23px;
+    font-family:Microsoft-Yahei-Light;
+    opacity:0;
+}
+
+.button{
+    width:140px;
+    height:auto;
+    background:#F4F4F4;
+    padding:10px 15px;
+    float:left;
+    position:relative;
+    font-size:16px;
+    text-align:center;
+    margin: 10px 0px 10px 23px;
+    opacity:0;
+}
+
+.button:hover{
+    color:#C71515;
+}
+
+/* .button#one{
+    border: 2px solid green;
+}  */
+
+
+.NetworkText{
+    position:relative;
+    float:left;
+    margin:10px 21px 10px 23px;
+    font-family:Microsoft-Yahei-Light;
+    color:#848484; 
+    letter-spacing:2px;
+    line-height:150%;
+    opacity:0;
+}
+
+.dataBlock{
+    position:relative;
+    float:top;
+    top:200px;
+    width:auto;
+    height:30px;
+    padding:5px;
+    margin-bottom:10px;
+    margin-left:13px;
+    
+}
+
+.dealCapacity{
+    position:absolute;
+    float:left;
+    width:200px;
+    height:10px;
+    margin:0px 0px 10px 10px;
+    color:#848484; 
+    font-size:16px;
+    line-height:16px;
+    font-family:Microsoft-Yahei-Light;
+    /* border:2px solid green; */
+}
+
+.dealCapacityData{
+    position:absolute;
+    float:right;
+    width:auto;
+    margin-left:230px;
+    color:#848484; 
+    font-size:16px;
+    line-height:16px;
+    font-family:Microsoft-Yahei-Light;
+    
+}
+
+.communicationEfficiency{
+    position:relative;
+    float:left;
+    color:#848484; 
+    margin-top:40px;
+    margin-left:-20px;
+    font-family:Microsoft-Yahei-Light;
+}
+
+.communicationEfficiencyData{
+    float:left;
+}
+
+.NetworkMenu{
+    float:right;
+    position:absolute;
+    width:200px;
+    height:300px;
+    padding:10px 15px;
+    right:50px;
+    bottom:50px;
+    /* border:2px solid #C71515; */
+    overflow:scroll;
+    opacity:0;
+    /* pointer-events: none; */
+}
+    #netDiv{
+        position:relative;
+        float:left;
+        height:50px;
+        width:auto;
+        margin:0px 0px 45px 0px;
+        /* border:2px solid #C71515; */
+        opacity:0;
+        pointer-events: none;
+    }
+    #netDiv:hover{
+        color:#C71515;
+    }
+        #netIcon{
+            float:right;
+            /* src:"src/img/network-icon.ico"; */
+            height:50px;
+            width:50px;
+            /* border:2px solid #C71515; */
+            opacity:1;
+            pointer-events: none;
+        }
+
+        #NetworkSerial{
+            position:relative;
+            float:right;
+            color:#848484;
+            font-size:16px;
+            color:#C71515;
+            margin:15px 15px 10px 15px;
+            line-height:100%;
+            font-family:Microsoft-Yahei-Light;
+            opacity:0;
+            pointer-events: none;
+        }
+        #NetworkSerial:hover{
+            color:#848484;
+        }
+
+.satelliteUI{
+    position:absolute;
+    top:30%;
+    left:55%;
+    /* border:2px solid green; */
+    width:30%;
+    height:30%;
+    font-size:36px;
+    color:#C71515;
+    opacity:0;
+    font-family:Microsoft-Yahei-Light;
+
+}
+    .satelliteCaption{
+        opacity:0;
+    }
+    .satelliteText{
+        font-size:16px;
+        color:#6F6F6F;
+        font-family:Microsoft-Yahei-Light;
+        opacity:0;
+    }
+
+.satelliteMenu{
+    float:right;
+    position:absolute;
+    width:170px;
+    height:300px;
+    padding:10px 15px;
+    right:50px;
+    bottom:50px;
+    /* border:2px solid #C71515; */
+    overflow:auto;
+    opacity:0;
+    pointer-events: none;
+}
+    .sateDiv{
+        position:relative;
+        float:right;
+        /* color:green; */
+        height:40px;
+        width:160px;
+        margin:0px 0px 45px 0px;
+        opacity:0;
+        pointer-events: none;
+    }
+    
+        .sateIcon{
+                position:relative;
+                float:right;
+                height:40px;
+                width:40px;
+                opacity:0;
+                pointer-events: none;
+        }
+
+        .satelliteSerial{
+            position:relative;
+            float:right;
+            color:#848484;
+            font-size:16px;
+            color:#C71515;
+            margin:15px 15px 45px 15px;
+            line-height:100%;
+            font-family:Microsoft-Yahei-Light;
+            opacity:0;
+            pointer-events: none;
+        }
+
+.satelliteIndication{
+    width:30px;
+    height:30px;
+}
+
+.satelliteIndication{
+    position:absolute;
+    opacity:0;
+    pointer-events:none;
+}
+
+.flank1Indication1{
+    position:absolute;
+    height:auto;
+    width:auto;
+
+    left:400px;
+    top:450px;
+    opacity:0;
+    pointer-events:none;
+}
+
+.flank1Indication2{
+    position:absolute;
+    height:auto;
+    width:auto;
+
+    left:300px;
+    top:100px;
+    opacity:0;
+    pointer-events:none;
+}
+
+.flank1Indication3{
+    position:absolute;
+    height:auto;
+    width:auto;
+
+    left:100px;
+    top:300px;
+    opacity:0;
+    pointer-events:none;
+}
+
+.flank1Circle{
+    position:relative;
+    float:left;
+    border-radius:100%;
+    border:1px solid #C71515;
+    width:50px;
+    height:50px;
+    opacity:0;
+    pointer-events:none;
+}
+
+.flank1Dot{
+    position:relative;
+    border-radius:100%;
+    float:left;
+    border:5px solid #C71515;
+    margin-left:10px;
+    top:6px;
+    width:5px;
+    height:5px;
+    opacity:0;
+    pointer-events:none;
+}
+
+.flank1Item{
+    position:relative;
+    float:left;
+    margin-left:10px;
+    font-family:Microsoft-Yahei-Light;
+    height:auto;
+    color:#6F6F6F;
+    opacity:0;
+    pointer-events:none;
+}
+
+.flank1Props{
+    position:relative;
+    /* float:top; */
+    float:top;
+    margin-top:25px;
+    margin-left:80px;
+    color:#6F6F6F;
+    font-family:Microsoft-Yahei-Light;
+    opacity:0;
+    pointer-events:none;
+}
+
+
+.bottomIndication1{
+    position:absolute;
+    height:auto;
+    width:auto;
+
+    left:300px;
+    top:550px;
+    opacity:0;
+    pointer-events:none;
+}
+
+.bottomIndication2{
+    position:absolute;
+    height:auto;
+    width:auto;
+
+    left:500px;
+    top:150px;
+    opacity:0;
+    pointer-events:none;
+}
+
+.bottomIndication3{
+    position:absolute;
+    height:auto;
+    width:auto;
+
+    left:170px;
+    top:300px;
+    opacity:0;
+    pointer-events:none;
+}
+
+.bottomCircle{
+    position:relative;
+    float:left;
+    border-radius:100%;
+    border:1px solid #C71515;
+    width:50px;
+    height:50px;
+    opacity:0;
+    pointer-events:none;
+}
+
+.bottomDot{
+    position:relative;
+    border-radius:100%;
+    float:left;
+    border:5px solid #C71515;
+    margin-left:10px;
+    top:6px;
+    width:5px;
+    height:5px;
+    opacity:0;
+    pointer-events:none;
+}
+
+.bottomItem{
+    position:relative;
+    float:left;
+    margin-left:10px;
+    font-family:Microsoft-Yahei-Light;
+    height:auto;
+    color:#6F6F6F;
+    opacity:0;
+    pointer-events:none;
+}
+
+.bottomProps{
+    position:relative;
+    /* float:top; */
+    float:top;
+    margin-top:25px;
+    margin-left:80px;
+    color:#6F6F6F;
+    font-family:Microsoft-Yahei-Light;
+    opacity:0;
+    pointer-events:none;
+}
+
+
+
+
+.topIndication1{
+    position:absolute;
+    height:auto;
+    width:auto;
+
+    left:400px;
+    top:450px;
+    opacity:0;
+    pointer-events:none;
+}
+
+.topIndication2{
+    position:absolute;
+    height:auto;
+    width:auto;
+
+    left:300px;
+    top:100px;
+    opacity:0;
+    pointer-events:none;
+}
+
+.topIndication3{
+    position:absolute;
+    height:auto;
+    width:auto;
+
+    left:100px;
+    top:300px;
+    opacity:0;
+    pointer-events:none;
+}
+
+.topCircle{
+    position:relative;
+    float:left;
+    border-radius:100%;
+    border:1px solid #C71515;
+    width:50px;
+    height:50px;
+    opacity:0;
+    pointer-events:none;
+}
+
+.topDot{
+    position:relative;
+    border-radius:100%;
+    float:left;
+    border:5px solid #C71515;
+    margin-left:10px;
+    top:6px;
+    width:5px;
+    height:5px;
+    opacity:0;
+    pointer-events:none;
+}
+
+.topItem{
+    position:relative;
+    float:left;
+    margin-left:10px;
+    font-family:Microsoft-Yahei-Light;
+    height:auto;
+    color:#6F6F6F;
+    opacity:0;
+    pointer-events:none;
+}
+
+.topProps{
+    position:relative;
+    /* float:top; */
+    float:top;
+    margin-top:25px;
+    margin-left:80px;
+    color:#6F6F6F;
+    font-family:Microsoft-Yahei-Light;
+    opacity:0;
+    pointer-events:none;
 }

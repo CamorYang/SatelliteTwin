@@ -9,89 +9,282 @@
     <link rel="stylesheet" href="./style.css">
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="calendar-heatmap.css">
+    <script src="./src/js/jquery.min.js" type="text/javascript"></script>
     <header permissions-policy: interest-cohort=()></header>
 </head>
 
 <body>
-    <!-- canvas -->
-    <div>
-        <canvas class="webgl"></canvas>
-    </div>
+    <div id="main">
 
-    <!-- logo -->
-    <img src="src/pic/icon.ico" alt="logo" class="logo">
-
-    <!-- welcome -->
-    <div class="welcome">卫星网络数字孪生系统</div>
-
-    <!-- enter -->
-    <a class="enter">
-        <div class="line"></div>
-        <div class="chara">进入</div>
-    </a>
-
-    <!-- interface1 mainMenu -->
-    <div class="mainMenu hide">
-        <div class="return hide" >
-            <i class='bx bx-left-arrow-alt' id="return"></i>
+        <!-- canvas -->
+        <div style="z-index: 5">
+            <canvas class="webgl" ></canvas>
         </div>
-        <div class="upBlock">
-            <div class="title">卫星网络状态介绍</div>
-            <div class="Description">卫星互联网数字伴飞智能自主系统以实现卫星互联网系统数字化与智能化实时管理为目标，包括卫星智能传感与监测技术、卫星互联网状态评价方法等多项核心技术。</div>
-        </div>
-        <div class="upBlock">
-            <div class="title">卫星网络综合状态</div>
-            <div class="Description">
-                <ul>
-                    <li class="list">
-                        <span class="subDes">公转周期</span>
-                        <span class="subValue">73%</span>
-                    </li>
-                    <li class="list">
-                        <span class="subDes">近地海拔</span>
-                        <span class="subValue">30067米</span>
-                    </li>
-                    <li class="list">
-                        <span class="subDes">远地海拔</span>
-                        <span class="subValue">49537米</span>
-                    </li>
-                    <li class="list">
-                        <span class="subDes">当前推进速度</span>
-                        <span class="subValue">4700km/min</span>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="bottomBlock hide">
-            <div class="title">卫星网络异常状态时间记录</div>
-            <iframe src="timeRecording.html" frameborder="0" width="1000" height="200"></iframe>
-        </div>
-    </div>  
 
-    <div class="glitch hide">
-        <div class="scrollReminder">
-            <div class="char">下滑查看</div>
+        <!-- logo -->
+        <a href = "javascript:document.location.reload(true);"><img src="src/pic/icon.ico" alt="logo" class="logo" style="z-index: 5"></a>
+        
+        <!-- <button id="mainBack"></button> -->
+        <div id="mainBack">返回</div>
+        <!-- welcome -->
+        <div class="welcome" style="z-index: 5">卫星网络数字孪生系统</div>
+
+        <!-- enter -->
+        <a class="enter" style="z-index: 5">
             <div class="line"></div>
+            <div class="chara">进入</div>
+        </a>
+
+        <!--  mainMenu -->
+        <div class="mainMenu hide" style="z-index: 5">
+            <div class="return hide" >
+                <i class='bx bx-left-arrow-alt' id="return"></i>
+            </div>
+            <div class="upBlock">
+                <div class="title">卫星网络状态介绍</div>
+                <div class="Description">卫星互联网数字伴飞智能自主系统以实现卫星互联网系统数字化与智能化实时管理为目标，包括卫星智能传感与监测技术、卫星互联网状态评价方法等多项核心技术。</div>
+            </div>
+            <div class="upBlock">
+                <div class="title">卫星网络综合状态</div>
+                <div class="Description">
+                    <ul>
+                        <li class="list">
+                            <span class="subDes">公转周期</span>
+                            <span class="subValue">73%</span>
+                        </li>
+                        <li class="list">
+                            <span class="subDes">近地海拔</span>
+                            <span class="subValue">30067米</span>
+                        </li>
+                        <li class="list">
+                            <span class="subDes">远地海拔</span>
+                            <span class="subValue">49537米</span>
+                        </li>
+                        <li class="list">
+                            <span class="subDes">当前推进速度</span>
+                            <span class="subValue">4700km/min</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="bottomBlock hide">
+                <div class="title">卫星网络异常状态时间记录</div>
+                <iframe src="timeRecording.html" frameborder="0" width="1000" height="200"></iframe>
+            </div>
+            <!-- 姿态测量精度等 -->
+            <!-- <div class="gesturePrecision">  </div> -->
+            <!-- 支持调度与卫星数 -->
+            <!-- <div class="satelliteCount"></div> -->
+        </div>  
+        <!-- mainMenu networkUI -->
+        <div class="glitch hide" style="z-index: 5">
+            <div class="scrollReminder">
+                <div class="char">下滑查看故障列表</div>
+                <div class="line"></div>
+            </div>
+            <div class="container">
+                <div class="glitchList">
+                    <div class="movingRegion odd" id="Net1">
+                            <div class="circle"></div>
+                            <div class="serial">Net 16-1</div>
+                    </div>
+                    <div class="movingRegion even" id="second">
+                            <div class="circle"></div>
+                            <div class="serial">Net 16-2</div>
+                    </div>
+                    <div class="movingRegion odd">
+                        <div class="circle"></div>
+                        <div class="serial">Net 16-3</div>
+                    </div>
+                    <div class="movingRegion even">
+                        <div class="circle"></div>
+                        <div class="serial">Net 16-4</div>
+                    </div>
+                    <div class="movingRegion odd">
+                        <div class="circle"></div>
+                        <div class="serial">Net 17-5</div>
+                    </div>
+                    <div class="movingRegion even">
+                        <div class="circle"></div>
+                        <div class="serial">Net 29-1</div>
+                    </div>
+                    <div class="movingRegion odd">
+                        <div class="circle"></div>
+                        <div class="serial">Net 40-54</div>
+                    </div>
+                    <div class="movingRegion even">
+                        <div class="circle"></div>
+                        <div class="serial">Net 9-3</div>
+                    </div>
+                </div>
+            </div>
+            
         </div>
-        <div class="glitchList">
-            <div class="movingRegion one">
-                <div class="circle"></div>
-                <div class="serial">Net 16-1</div>
+    <!--    <div style="width: 500px;height: 400px;background: #bbbbbb;z-index: 0;left: 300px;top:200px;position:absolute;"></div>-->
+
+
+        <!-- Network UI -->
+        <div class="Network">
+            <div class="NetworkData">Net16-1</div>
+            <div class="button" id="one">Sa16-2519</div>
+            <div class="button" id="two">Sa16-2520</div>
+            <div class="button">Sa16-25279</div>
+            <div class="button">Sa15-2539</div>
+            <div class="button">Sa73-74</div>
+            <div class="NetworkText">Net16-1卫星组网在过去一周内经历了4次数据波动与异常，波动集中于周中时段，波动时间集中在6pm-9pm之间。</div>
+            <div class="dataBlock">
+                <div class="dealCapacity">处理能力:</div>
+                <div class="dealCapacityData">700 MIPS</div>
             </div>
-            <div class="movingRegion two">
-                <div class="circle"></div>
-                <div class="serial">Net 16-2</div>
+            <div class="dataBlock">
+                <div class="dealCapacity">无线有效通信效率</div>
+                <div class="dealCapacityData">2Mbps</div>
             </div>
-            <div class="movingRegion three">
-                <div class="circle"></div>
-                <div class="serial">Net 16-3</div>
-            </div>
-            <div class="movingRegion four">
-                <div class="circle"></div>
-                <div class="serial">Net 16-4</div>
+            <div class="dataBlock">
+                <div class="dealCapacity">无线接入网络基站点数</div>
+                <div class="dealCapacityData">40</div>
             </div>
         </div>
+        <!-- Network Menu -->
+        <div class="NetworkMenu">
+            <div id="netDiv" class="netDiv">
+                <img id="netIcon" class="netIcon" src="src/img/network-icon.ico">
+                <div id="NetworkSerial" class="NetworkSerial">Net21-3</div>
+            </div>
+            <div id="netDiv" class="netDiv">
+                <img id="netIcon" class="netIcon" src="src/img/network-icon.ico">
+                <div id="NetworkSerial" class="NetworkSerial">Net17-5</div>
+            </div>
+            <div id="netDiv" class="netDiv">
+                <img id="netIcon" class="netIcon" src="src/img/network-icon.ico">
+                <div id="NetworkSerial" class="NetworkSerial">Net29-4</div>
+            </div>
+            <div id="netDiv" class="netDiv">
+                <img id="netIcon" class="netIcon" src="src/img/network-icon.ico">
+                <div id="NetworkSerial" class="NetworkSerial">Net19-14</div>
+            </div>
+            <div id="netDiv" class="netDiv">
+                <img id="netIcon" class="netIcon" src="src/img/network-icon.ico">
+                <div id="NetworkSerial" class="NetworkSerial">Net16-5</div>
+            </div>
+            <div id="netDiv" class="netDiv">
+                <img id="netIcon" class="netIcon" src="src/img/network-icon.ico">
+                <div id="NetworkSerial" class="NetworkSerial">Net54-17</div>
+            </div>
+        </div>
+
+
+        <!-- Satellite UI -->
+        <div class="satelliteUI">
+            <div class="satelliteCaption">Sate26-17</div>
+            <div class="satelliteText">卫星26-17属于卫星组网Net26-17的核卫星，同时参与Net26-16, Net26-18, Net25-18, Net27-15的数据传输。</div> 
+        </div>
+        <!-- Satellite Menu -->
+        <div class="satelliteMenu">
+            <!-- <div class="sateDIv">
+                <img class="sateIcon" src="src/img/satellite-icon.ico">
+                <div class="satelliteSerial">24-68</div>
+            </div>
+            <div class="sateDIv">
+                <img class="sateIcon" src="src/img/satellite-icon.ico">
+                <div class="satelliteSerial">14-08</div>
+            </div> -->
+            <div class="sateDIv targetSate">
+                <img class="sateIcon" src="src/img/satellite-icon.ico">
+                <div class="satelliteSerial">27-51</div>
+            </div>
+            <div class="sateDIv">
+                <img class="sateIcon" src="src/img/satellite-icon.ico">
+                <div class="satelliteSerial">01-04</div>
+            </div>
+            <div class="sateDIv">
+                <img class="sateIcon" src="src/img/satellite-icon.ico">
+                <div class="satelliteSerial">05-23</div>
+            </div>
+            <div class="sateDIv">
+                <img class="sateIcon" src="src/img/satellite-icon.ico">
+                <div class="satelliteSerial">07-21</div>
+            </div>
+            <div class="sateDIv">
+                <img class="sateIcon" src="src/img/satellite-icon.ico">
+                <div class="satelliteSerial">96-53</div>
+            </div>
+        </div>
+
+
+        <!-- SatelliteIndication -->
+        <img src="src/img/satellite-indication-icon.ico" alt="" class="satelliteIndication flank1">
+        <img src="src/img/satellite-indication-icon.ico" alt="" class="satelliteIndication bottom">
+        <img src="src/img/satellite-indication-icon.ico" alt="" class="satelliteIndication top">
+        <img src="src/img/satellite-indication-icon.ico" alt="" class="satelliteIndication back">
+
+        <!-- flank1Indication1 -->
+        <div class="flank1Indication1">
+            <div class="flank1Circle"></div>
+            <div class="flank1Dot"></div>
+            <div class="flank1Item">地面虚拟射频通道接收数</div>
+            <div class="flank1Props">5个</div>
+        </div>
+
+        <!-- flank1Indication2 -->
+        <div class="flank1Indication2">
+            <div class="flank1Circle"></div>
+            <div class="flank1Dot"></div>
+            <div class="flank1Item">核心网用户面处理时延</div>
+            <div class="flank1Props">0.0045ms</div>
+        </div>
+
+        <!-- flankIndication3 -->
+        <div class="flank1Indication3">
+            <div class="flank1Circle"></div>
+            <div class="flank1Dot"></div>
+            <div class="flank1Item">核心网转发能力</div>
+            <div class="flank1Props">1.23Gbps</div>
+        </div>
+
+
+         <!-- bottomIndication1 -->
+         <div class="bottomIndication1">
+            <div class="bottomCircle"></div>
+            <div class="bottomDot"></div>
+            <div class="bottomItem">同步时延</div>
+            <div class="bottomProps">7.2s</div>
+        </div>
+
+        <!-- bottomIndication2 -->
+        <div class="bottomIndication2">
+            <div class="bottomCircle"></div>
+            <div class="bottomDot"></div>
+            <div class="bottomItem">供电能力</div>
+            <div class="bottomProps">4300W</div>
+        </div>
+
+        <!-- bottomIndication3 -->
+        <div class="bottomIndication3">
+            <div class="bottomCircle"></div>
+            <div class="bottomDot"></div>
+            <div class="bottomItem" style="color: #C71515">带宽</div>
+            <div class="bottomProps" style="color: #C71515">1.6GHz</div>
+        </div>
+
+         <!-- topIndication1 -->
+         <div class="topIndication1">
+            <div class="topCircle"></div>
+            <div class="topDot"></div>
+            <div class="topItem">该节点无线有效通信速率</div>
+            <div class="topProps">1.7Mbps</div>
+        </div>
+
+        <!-- bottomIndication2 -->
+        <div class="topIndication2">
+            <div class="topCircle"></div>
+            <div class="topDot"></div>
+            <div class="topItem">处理能力</div>
+            <div class="topProps">670MIPS</div>
+        </div>
+
     </div>
+   
     <script src="./node_modules/gsap/dist/gsap.min.js"></script>
     <!-- <script type="module" src="./DeBug.js"></script> -->
     <script src="calendar-heatmap.js"></script>
